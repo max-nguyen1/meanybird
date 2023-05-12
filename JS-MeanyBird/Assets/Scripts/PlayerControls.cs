@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
@@ -14,6 +15,14 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     //height of the bird object on the y axis
     private float objectHeight;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "HighSpike" || collision.gameObject.tag == "LowSpike" || collision.gameObject.tag == "Ground")
+        {
+            Time.timeScale = 0;
+        }
+    }
 
 
     // Start is called before the first frame update
